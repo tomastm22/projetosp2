@@ -1,33 +1,11 @@
-////////////////////////////////////////////////////////////////////////////Codigo Principal
 
-import java.util.Scanner;
-
-public class App {
-    public static void main(String[] args) throws Exception {
-       
-
-      
-      // Variavel para entra o nome do usuario.
+/*Implementar depois...
+ * // Variavel para entra o nome do usuario.
 
         //String nomeUsuario;
         //nomeUsuario = "";
-      
-      // Criando os personagens.
 
-        Personagem Lucas = new Personagem("Lucas",100);
-        Personagem Mia = new Personagem("Mia",100);
-
-      // Criando Escaner
-
-      Scanner escaneador = new Scanner(System.in);
-
-      
-
-      // Criando os Capítulos.
-
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-      // Logo apos criar o Cap.INI. eu mostro o Cap. e chamo e Escaner para pegar o nome do usuario.
+        // Logo apos criar o Cap.INI. eu mostro o Cap. e chamo e Escaner para pegar o nome do usuario.
                                             //---------------------------------------------------------------
         Capitulo INICIO = new Capitulo(
                                 "-----------------------INICIO-----------------------",
@@ -45,19 +23,54 @@ public class App {
 
         Capitulo INTRODUCAO = new Capitulo(
                                      "-----------------------------CAPÍTULO INTRODUTORIO-----------------------------",
-                              new String[]{"| Prazer! " /*  + nomeUsuario +*/ + ". Vamos iniciar nossa aventura.                     |",  
-                                           "| Você terar duas opções de personagens para seguir: Lucas e Mia.             |",
-                                           "| Seu objetivo é chegar até o fim dessa aventura com seu personagem vivo,     |",
-                                           "| ou seja, não deixar que os pontos de energia do personagem chegem a 0(zero).|",
-                                           "| Boa Sorte.                                                                  |",
-                                           "-------------------------------------------------------------------------------"},
-                                        null,
-                                        0,
-                                        escaneador);
+                              new String[]{"| Prazer! " /*  + nomeUsuario +*//*  + ". Vamos iniciar nossa aventura.                     |",  
+                              "| Você terar duas opções de personagens para seguir: Lucas e Mia.             |",
+                              "| Seu objetivo é chegar até o fim dessa aventura com seu personagem vivo,     |",
+                              "| ou seja, não deixar que os pontos de energia do personagem chegem a 0(zero).|",
+                              "| Boa Sorte.                                                                  |",
+                              "-------------------------------------------------------------------------------"},
+                           null,
+                           0,
+                           escaneador);
 
-        //INTRODUCAO.mostrar();
-        
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//INTRODUCAO.mostrar();
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ */
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////Codigo Principal
+
+
+
+
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+       
+
+      // Criando os personagens.
+
+        Personagem Lucas = new Personagem("Lucas",100);
+        Personagem Mia = new Personagem("Mia",100);
+
+      // Criando Escaner
+
+        Scanner escaneador = new Scanner(System.in);
+
+
+      // Criação os Capítulos.
+      // Todos os capítulos forão criados sem informar as escolhas no primeiro momento.
+
 
         Capitulo PARTE_1 = new Capitulo(
                                   "--------------------------------------------PARTE 1--------------------------------------------",
@@ -161,11 +174,10 @@ public class App {
         
 
         
+        // Logica do Código - Estrutura de Arvore.
 
         //Adicionando as escolhas aos Capítulos
 
-        //INICIO.escolhas.add(new Escolha(null, INTRODUCAO));
-        //INTRODUCAO.escolhas.add(new Escolha(null, PARTE_1));
         PARTE_1.escolhas.add(new Escolha("Lucas", PARTE_2));
         PARTE_1.escolhas.add(new Escolha("Mia", PARTE_3));
         PARTE_2.escolhas.add(new Escolha("direita", PARTE_5));
@@ -173,52 +185,14 @@ public class App {
         PARTE_3.escolhas.add(new Escolha("esquerda", PARTE_6));
         PARTE_3.escolhas.add(new Escolha("direita", PARTE_7));
 
+        //Referencio a PARTE_1 como raiz da Arvore
         Capitulo raiz = PARTE_1;
-
-
-        // Logica do Código 
-        // Metodo mostrar...() para imprimir o conteudo do capitulo na tela
-        // Metodo escolher() para pegar a escolha do usuario
         
-        raiz.mostrar();
 
-        /* 
+        //Chamo executar para o nó raiz
+        raiz.executar();
 
-        PARTE_1.mostrar();
-        int escolhaDoUsuario = PARTE_1.escolher();
-
-       // o codigo é estruturado em if...else...
-
-        if (escolhaDoUsuario == 0) 
-        {
-          PARTE_2.mostrar();
-          //Variavel que armazena a escolha do usuario
-          escolhaDoUsuario = PARTE_2.escolher();
-
-          if (escolhaDoUsuario == 0) 
-          {
-            PARTE_5.mostrar();
-          } 
-          else 
-          {
-            PARTE_4.mostrar();
-          }
-
-        } 
-        else 
-        {
-          PARTE_3.mostrar();
-          escolhaDoUsuario = PARTE_3.escolher();
-
-          if (escolhaDoUsuario == 1) 
-          {
-            PARTE_6.mostrar();
-          } 
-          else 
-          {
-            PARTE_7.mostrar();
-          }
-        }*/
+        
 
     }
 }
