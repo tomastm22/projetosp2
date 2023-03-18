@@ -2,6 +2,7 @@
 
 // Importei a biblioteca java...
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Capitulo {
@@ -10,7 +11,7 @@ public class Capitulo {
 
     String nome;
     String[] textos;
-    String[] escolhas;
+    ArrayList<Escolha> escolhas;
     Personagem personagem;
     int alteracaoEnergia;
     Scanner escaneador;
@@ -20,17 +21,16 @@ public class Capitulo {
     Capitulo(
         String nome,
         String[] textos,
-        String[] escolhas,
         Personagem personagem,
         int    alteracaoEnergia,
         Scanner escaneador)
     {
         this.nome               = nome;
         this.textos             = textos;
-        this.escolhas           = escolhas;
         this.personagem         = personagem;
         this.alteracaoEnergia   = alteracaoEnergia;
         this.escaneador         = escaneador;
+        this.escolhas           = new ArrayList<Escolha>();
     }
 
     // Metodos para mostrar o conteudo dos capitulos
@@ -44,13 +44,17 @@ public class Capitulo {
             System.out.println(texto);
         }
 
-        if (this.escolhas != null) 
+        if (this.escolhas.size() != 0) 
         {
-            for (String escolha : escolhas)
+            for (Escolha escolha : escolhas)
             {
-                System.out.println(" - " + escolha);
+                System.out.println(" - " + escolha.texto);
             }
             System.out.println();
+
+            //int idEscolha = escolher();
+            //this.escolhas.get(idEscolha).proximo.mostrar();
+
         } 
         else 
         {
@@ -62,14 +66,20 @@ public class Capitulo {
         {
             this.personagem.ferimento(alteracaoEnergia);        
             this.personagem.status();
-            System.out.println("[ O personagem perdeu "+this.alteracaoEnergia+" pontos de energia nessa parte. ");
+            //System.out.println("[ O personagem perdeu "+this.alteracaoEnergia+" pontos de energia nessa parte. ");
         } 
         else 
         {
             System.out.println("[ Esse Capítulo não possui personagem. ");
         }
         System.out.println();
-        
+
+        if (this.escolhas.size() != 0) 
+        {
+
+            int idEscolha = escolher();
+            this.escolhas.get(idEscolha).proximo.mostrar();
+        }
     }
 
     
@@ -96,9 +106,9 @@ public class Capitulo {
                     System.out.println("[ Digite sua escolha: ]");
                     escolhaDigitada = escaneador.nextLine();
 
-                    for (int i = 0; i < escolhas.length; i++) 
+                    for (int i = 0; i < escolhas.size(); i++) 
                     {
-                        if (escolhaDigitada.equals(escolhas[i])) 
+                        if (escolhaDigitada.equals(escolhas.get(i).texto)) 
                         {
                             idEscolha = i;
                         }
